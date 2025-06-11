@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import {
     Sheet,
@@ -9,18 +11,44 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { useState } from "react";
+
+
 
 export function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const navItems = [
+        { href: '#profissionais', label: "Profissionais" }
+    ]
+
+    const NavLinks = () => (
+        <>
+            {navItems.map((item) => (
+                <Button
+                    onClick={() => setIsOpen(false)}
+                    key={item.href}
+                    asChild
+                    variant="ghost"
+                    className="text-black hover:bg-transparent cursor-pointershadow-none"
+                >
+                    <Link href={item.href}>
+                        {item.label}
+                    </Link>
+                </Button>
+            ))}
+        </>
+    );
     return (
         <header className="fixed top-0 right-0 left-0 z-[999] py-4 px-6 bg-white shadow-md">
             <div className="container mx-auto flex items-center justify-between">
                 <Link href="/" className="text-xl font-bold text-zinc-900">
                     Odonto<span className="text-emerald-500">PRO</span>
                 </Link>
-                <nav className="hidden md:flex items-center">
-                    <a href="#">Profissionais</a>
+                <nav className="hidden md:flex items-center space-x-4">
+                    <NavLinks />
                 </nav>
-                <Sheet>
+                <Sheet open={isOpen} onOpenChange={setIsOpen}>
                     <SheetTrigger asChild className="md:hidden">
                         <Button className="text-black hover:bg-transparent cursor-pointer"
                             variant="ghost">
@@ -33,11 +61,10 @@ export function Header() {
                             <SheetDescription>
                                 Veja nossos links
                             </SheetDescription>
-                            <nav>
-                                <a href="#">Profissionais</a>
+                            <nav className="flex flex-col items-start space-y-4 mt-6">
+                                <NavLinks />
                             </nav>
                         </SheetHeader>
-
                     </SheetContent>
                 </Sheet>
             </div>
