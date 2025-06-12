@@ -5,7 +5,7 @@ import doctorImg from "../../../../public/doctor-hero.png";
 export function Hero(){
     return (
         <section>
-            <div className="container mx-auto pt-20 px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto pt-20 px-4 pb-4 sm:pb-0 sm:px-6 lg:px-8">
                 <main className="flex items-center justify-center">
                     <article className="flex-[2] max-w-3xl space-y-8 flex flex-col justify-center">
                         <h1 className="text-4xl lg:text-5xl font-bold max-w-2xl tracking-tight">
