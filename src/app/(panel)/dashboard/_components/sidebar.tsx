@@ -137,7 +137,8 @@ export function SidebarDashboard({ children }: {
                     <Sheet>
                         <div className="flex items-center gap-4">
                             <SheetTrigger asChild>
-                                <Button variant="outline" className="md:hidden">
+                                <Button variant="outline" className="md:hidden"
+                                    onClick={() => setIsCollapsed(false)}>
                                     <List className="w-5 h-5" />
                                 </Button>
                             </SheetTrigger>
