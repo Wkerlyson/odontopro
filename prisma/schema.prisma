@@ -19,8 +19,11 @@ model Appointment {
   serviceId String
   service Service @relation(fields: [serviceId], references: [id])
 
-  userId String //id da clinica (uyser)
+  userId String //id da clinica (user)
   user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Reminder{
